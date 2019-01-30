@@ -1,6 +1,15 @@
-Potencia 3 a la 5 243
 Error base origen
 0100001000
 Error numero
+La parte entera del numero 1.1 de base 3 a base 10 es: 1
+Numerador 3 y denominador 3
+La parte entera del numero 0.75 de base 10 a base 10 es: 0
+Numerador 570 y denominador 100
 Error base destino
 0100AF01000
+La parte entera del numero 243.51 de base 6 a base 10 es: 99
+Numerador 66 y denominador 36
+La parte entera del numero 257.8 de base 9 a base 10 es: 214
+Numerador 72 y denominador 9
+La parte entera del numero 1A de base 11 a base 10 es: 21
+Numerador 0 y denominador 1
