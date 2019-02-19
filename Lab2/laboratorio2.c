@@ -17,11 +17,10 @@ long long convertToDecimal(char number[65], int inBase){
 	int i;
 	long long partInt=0;
 	int val;
-	//printf("El indice es %d para el numero: %s\n",indexOfPoint,number);
 	for(i=0; i<indexOfPoint; i++)	{
 		if('0'<=number[i] && '9'>=number[i]){
 			val = number[i]-'0';
-			
+
 		}else if('A'<=number[i] && 'Z'>=number[i]){
 			val = 10 + (number[i]-'A');
 		}
@@ -29,19 +28,19 @@ long long convertToDecimal(char number[65], int inBase){
 	}
 	printf("La parte entera del numero %s de base %d a base 10 es: %lld\n",number,inBase,partInt);
 	//Final de la parte entera
-	
-	
-	//Parte Decimal
+
+
+	/*//Parte Decimal
 	int potenciaDenominador = (strlen(number)-(indexOfPoint+1));
 	int potenciaNumerador = 1;
 	long long numerador = 0;
 	long long denominador = powI(inBase, potenciaDenominador);
 	/*printf("Potencia tentativa para el numero %s es: %d\n",number,potenciaDenominador);
-	printf("El denominador del mismo es: %lld\n \n",denominador);*/
+	printf("El denominador del mismo es: %lld\n \n",denominador);
 	for(i=indexOfPoint+1; i<strlen(number);i++){
 		if('0'<=number[i] && '9'>=number[i]){
 			val = number[i]-'0';
-			
+
 		}else if('A'<=number[i] && 'Z'>=number[i]){
 			val = 10 + (number[i]-'A');
 		}
@@ -51,13 +50,13 @@ long long convertToDecimal(char number[65], int inBase){
 	printf("Numerador %lld y denominador %lld\n",numerador,denominador);
 	/*long double num = (long double) numerador;
 	long double den = (long double) denominador;
-	long double Int = (long double)partInt;*/
+	long double Int = (long double)partInt;
 	long double division = (numerador*1.0L)/(denominador*1.0L);
-	
+
 	//Final parte decimal
-	
-	//printf("El numero %s en base %d, cambiado a base 10 es %.20Lf \n",number,inBase,((partInt*1.0L)+division);
-	
+
+	//printf("El numero %s en base %d, cambiado a base 10 es %.20Lf \n",number,inBase,((partInt*1.0L)+division);*/
+
 }
 
 
@@ -66,12 +65,12 @@ int checkPoint(char number[65]){
 	int i;
 	for(i=0; i<strlen(number); i++){
 		if(number[i]!='.'){
-			res++;	
+			res++;
 		}else{
 			break;
 		}
 	}
-	
+
 	return res;
 }
 
@@ -82,15 +81,15 @@ bool testBase(int inBase, char number[65]){
 			int val = number[i]-'0';
 			if(inBase<=val){
 				return false;
-			}		
+			}
 		}else if('A'<=number[i] && 'Z'>=number[i]){
 			int val = 10 + (number[i]-'A');
 			if(inBase<=val){
 				return false;
 			}
 		}
-	
-		
+
+
 	}
 	return true;
 }
@@ -126,10 +125,10 @@ int main(){
 				continue;
 			}
 			convertToDecimal(number, inBase);
-			
-			
+
+
 		}
-		
+
 	}
-	
+
 }
