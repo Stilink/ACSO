@@ -2,6 +2,9 @@
 #include<string.h>
 #include<stdbool.h>
 
+char numberToBase[128];
+unsigned long long partInt;
+
 long long powI(int base, int power){
 	int i;
 	long long res = 1;
@@ -11,22 +14,58 @@ long long powI(int base, int power){
 	return res;
 }
 
-long long convertToDecimal(char number[65], int inBase){
-	int indexOfPoint = checkPoint(number);
+
+void convertToBase(unsigned long long number, int toBase){
+    int i;
+    for(i=0; i < 128; i++) numberToBase[i]='\0';
+    int residuo = 1;
+    i = 0;
+    char c = '0';
+    unsigned long long resto = 1;
+    while(resto!=0){
+        resto = number/toBase;
+        residuo = number%toBase;
+        if(residuo>9) {
+            residuo+= 'A'-10;
+            c = residuo;
+        }else{
+            c = residuo+'0';
+        }
+        numberToBase[i]=c;
+        number = resto;
+        i++;
+    }
+    int j;
+    for(j=i-1; j>=0;j--){
+        printf("%c",numberToBase[j]);
+
+    }
+    printf("\n");
+}
+void  convertToDecimal(char number[65], int inBase){
+	//int indexOfPoint = checkPoint(number);
 	//Parte entera
 	int i;
-	long long partInt=0;
+    partInt=0;
 	int val;
-	for(i=0; i<indexOfPoint; i++)	{
+	for(i=0; i<strlen(number); i++)	{
 		if('0'<=number[i] && '9'>=number[i]){
 			val = number[i]-'0';
 
 		}else if('A'<=number[i] && 'Z'>=number[i]){
 			val = 10 + (number[i]-'A');
 		}
-		partInt+=val*(powI(inBase, indexOfPoint-(i+1)));
+		partInt+=val*(powI(inBase, strlen(number)-i-1));
 	}
-	printf("La parte entera del numero %s de base %d a base 10 es: %lld\n",number,inBase,partInt);
+	//printf("La parte entera del numero %s de base %d a base 10 es: %lld\n",number,inBase,partInt);
+
+
+
+
+
+
+
+
 	//Final de la parte entera
 
 
@@ -40,7 +79,6 @@ long long convertToDecimal(char number[65], int inBase){
 	for(i=indexOfPoint+1; i<strlen(number);i++){
 		if('0'<=number[i] && '9'>=number[i]){
 			val = number[i]-'0';
-
 		}else if('A'<=number[i] && 'Z'>=number[i]){
 			val = 10 + (number[i]-'A');
 		}
@@ -52,9 +90,7 @@ long long convertToDecimal(char number[65], int inBase){
 	long double den = (long double) denominador;
 	long double Int = (long double)partInt;
 	long double division = (numerador*1.0L)/(denominador*1.0L);
-
 	//Final parte decimal
-
 	//printf("El numero %s en base %d, cambiado a base 10 es %.20Lf \n",number,inBase,((partInt*1.0L)+division);*/
 
 }
@@ -95,8 +131,8 @@ bool testBase(int inBase, char number[65]){
 }
 
 int main(){
-	freopen("in.in","r",stdin);
-	freopen("out.out","w",stdout);
+	/*freopen("in.in","r",stdin);
+	freopen("out.out","w",stdout);*/
 	int cases;
 	char number[65];
 	char _;
@@ -125,6 +161,7 @@ int main(){
 				continue;
 			}
 			convertToDecimal(number, inBase);
+            convertToBase(partInt, toBase);
 
 
 		}
