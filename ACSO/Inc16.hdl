@@ -1,0 +1,7 @@
+CHIP Inc16 {
+	IN in[16], c;
+	OUT out[16],
+	carry;
+	PARTS:
+		FullAdder16(a=in, b[0]=true, b[1..15]=false, c=c, sum=out, carry=carry);
+}		

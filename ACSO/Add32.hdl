@@ -1,0 +1,8 @@
+CHIP Add32 {
+	IN a1[16], a2[16],
+	b1[16], b2[16];
+	OUT sum1[16], sum2[16];
+	PARTS:
+		FullAdder16(a=a2, b=b2, c=false, sum=sum2, carry=carrySum1);
+		FullAdder16(a=a1, b=b1, c=carrySum1, sum=sum1, carry=carrySum2);
+}

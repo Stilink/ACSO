@@ -1,0 +1,6 @@
+CHIP isNegative32 {
+	IN in1[16], in2[16];
+	OUT out;
+	PARTS:
+		And(a=in1[15], b=true, out=out);
+}
