@@ -1,6 +1,6 @@
-load Complement2.hdl,
-output-file Complement2.out,
-compare-to Complement2.cmp,
+load complemento.hdl,
+output-file complemento.out,
+compare-to complemento.cmp,
 output-list in1%B1.16.1 in2%B1.16.1 out1%B1.16.1 out2%B1.16.1;
 
 set in1 %B0000000000000000,
