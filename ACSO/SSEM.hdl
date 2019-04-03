@@ -1,0 +1,30 @@
+CHIP SSEM {
+	IN cih[16], cil[16],
+	ch[16], cl[16],
+	sh[16], sl[16],
+	pi[3];
+	OUT rh[16], rl[16];
+	
+	PARTS:
+		//pi 000 ---> ci=s _ JMP S
+		And16(a=sh,b[0..15]=true,out=ins1h);
+		And16(a=sl,b[0..15]=true,out=ins1l);
+		//pi 100 ---> ci= (ci+s) _ JRP S
+		Add32(a1=cih, a2=cil, b1=sh, b2=sl, sum1=ins2h, sum2=ins2l);
+		//pi 010 ---> c= -s _ LDN S
+		complemento(ah=sh,al=sl,sh=ins3h,sl=ins3l);
+		//pi 110 ---> s= c _ STO S
+		And16(a=ch,b[0..15]=true,out=ins4h);
+		And16(a=cl,b[0..15]=true,out=ins4l);
+		//pi 001 or 101 ---> c= c - s _ SUB S
+		resta(ah=ch,al=cl,bh=sh,bl=sl,sh=ins5h,sl=ins5l);
+		//pi 011 ---> if c is negative ---> ci= ci+2, else ci= ci+1
+		Add32(a1=cih, a2=cil, b1[0..15]=false, b2[1..15]=false, b2[0]=true, sum1=addci1h, sum2=addci1l);
+		Add32(a1=cih, a2=cil, b1[0..15]=false, b2[1..15]=false, b2[0]=false, b2[1]=true, sum1=addci2h, sum2=addci2l);
+		isNegative32(in1=ch, in2=cl, out=cisNegative);
+		Mux32(ah=addci1h,al=addci1l, bh=addci2h, bl=addci2l, sel=cisNegative, outh=ins6h,outl=ins6l);
+		
+		//SSEM
+		Mux8Way16(a=ins1h, b=ins5h, c=ins3h, d=ins6h, e=ins2h, f=ins5h, g=ins4h, h=ch, sel=pi,out=rh);
+		Mux8Way16(a=ins1l, b=ins5l, c=ins3l, d=ins6l, e=ins2l, f=ins5l, g=ins4l, h=cl, sel=pi,out=rl);
+}

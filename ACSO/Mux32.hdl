@@ -1,0 +1,12 @@
+CHIP Mux32 {
+    IN ah[16],al[16], bh[16], bl[16], sel;
+    OUT outh[16],outl[16];
+    PARTS:
+	Not(in = sel, out = nots);
+    And16(a = ah, b[0]=nots, b[1]=nots, b[2]=nots, b[3]=nots, b[4]=nots, b[5]=nots, b[6]=nots, b[7]=nots, b[8]=nots, b[9]=nots, b[10]=nots, b[11]=nots, b[12]=nots, b[13]=nots, b[14]=nots, b[15]=nots, out = outah);
+	And16(a = al, b[0]=nots, b[1]=nots, b[2]=nots, b[3]=nots, b[4]=nots, b[5]=nots, b[6]=nots, b[7]=nots, b[8]=nots, b[9]=nots, b[10]=nots, b[11]=nots, b[12]=nots, b[13]=nots, b[14]=nots, b[15]=nots, out = outal);
+    And16(a = bh, b[0]=sel, b[1]=sel, b[2]=sel, b[3]=sel, b[4]=sel, b[5]=sel, b[6]=sel, b[7]=sel, b[8]=sel, b[9]=sel, b[10]=sel, b[11]=sel, b[12]=sel, b[13]=sel, b[14]=sel, b[15]=sel, out = outbh);
+	And16(a = bl, b[0]=sel, b[1]=sel, b[2]=sel, b[3]=sel, b[4]=sel, b[5]=sel, b[6]=sel, b[7]=sel, b[8]=sel, b[9]=sel, b[10]=sel, b[11]=sel, b[12]=sel, b[13]=sel, b[14]=sel, b[15]=sel, out = outbl);
+    Or16(a = outah, b = outbh, out = outh);
+	Or16(a = outal, b = outbl, out = outl);
+}
