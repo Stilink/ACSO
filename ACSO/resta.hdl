@@ -3,6 +3,6 @@ CHIP resta {
 	bh[16], bl[16];
 	OUT sh[16], sl[16];
 	PARTS:
-		Complement2(in1=bh, in2=bl, out1=notbh, out2=notbl);
+		complemento(in1=bh, in2=bl, out1=notbh, out2=notbl);
 		Add32(a1=ah, a2=al, b1=notbh, b2=notbl, sum1=sh, sum2=sl);
 }
