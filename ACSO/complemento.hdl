@@ -1,4 +1,4 @@
-CHIP Complement2 {
+CHIP complemento {
 	IN in1[16], in2[16];
 	OUT out1[16],out2[16];
 	
