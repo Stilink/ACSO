@@ -1,9 +1,9 @@
 CHIP complemento {
-	IN in1[16], in2[16];
-	OUT out1[16],out2[16];
+	IN ah[16], al[16];
+	OUT sh[16],sl[16];
 	
 	PARTS:
-		Not16(in=in1, out=notin1);
-		Not16(in=in2, out=notin2);
-		Add32(a1=notin1, a2=notin2, b1[0..15]=false, b2[0]=true, b2[1..15]=false, sum1=out1, sum2=out2);
+		Not16(in=ah, out=notah);
+		Not16(in=al, out=notal);
+		Add32(a1=notah, a2=notal, b1[0..15]=false, b2[0]=true, b2[1..15]=false, sum1=sh, sum2=sl);
 }
