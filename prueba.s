@@ -3,9 +3,9 @@
 @ 2. Escaleno y rectangulo.
 @ 3. Escaleto y obtusangulo.
 @ 4. Escaleto y acutangulo.
-@ 5. Isoceles y rectangulo.
-@ 6. Isoceles y obtusangulo.
-@ 7. Isoceles y acutangulo.
+@ 5. Isosceles y rectangulo.
+@ 6. Isosceles y obtusangulo.
+@ 7. Isosceles y acutangulo.
 @ R11 Area
 .text
 .global _start
