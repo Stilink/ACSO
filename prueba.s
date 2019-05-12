@@ -1,3 +1,12 @@
+@ R12 tipo de triangulo: 0. No es un triangulo 
+@ 1. Equilatero y acutangulo. 
+@ 2. Escaleno y rectangulo.
+@ 3. Escaleto y obtusangulo.
+@ 4. Escaleto y acutangulo.
+@ 5. Isoceles y rectangulo.
+@ 6. Isoceles y obtusangulo.
+@ 7. Isoceles y acutangulo.
+@ R11 Area
 .text
 .global _start
 _start:
