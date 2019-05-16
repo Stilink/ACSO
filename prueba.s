@@ -6,7 +6,7 @@
 @ 5. Isosceles y rectangulo.
 @ 6. Isosceles y obtusangulo.
 @ 7. Isosceles y acutangulo.
-@ R11 Area
+@ R11 Area*10 (para evitar el manejo de Reales)
 .text
 .global _start
 _start:
