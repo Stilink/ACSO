@@ -1,0 +1,48 @@
+Program MultOfVectors;
+const
+	nMax=500;
+
+var
+	vector1:Array[1..nMax] of integer;
+	vector2:Array[1..nMax] of integer;
+	mull:real;
+	mulr:real;
+	multi:real;
+	b:integer;
+	n:integer;
+begin
+	writeln('Los vectores deben tener el mismo tamaño. Digite un tamaño para los vectores');
+	readln(n);
+	writeln('Numeros del primer vector');
+	for b:=1 to n do
+		begin
+			readln(vector1[b])
+		end;
+	writeln('Numeros del segundo vector');
+	for b:=1 to n do
+		begin
+			readln(vector2[b])
+		end;
+	
+	cobegin
+		mull:=mult(0, (n div 2));
+		mulr:=mult((n div 2)+1, n);
+	coend;
+	multi:= mull+mulr;
+	writeln('Resultado:',multi);
+end;
+
+
+function mult(i,j:integer):integer;
+	var
+		multTemp:integer;
+		b:integer;
+	begin
+		multTemp:=0;
+		for b:=i to j do
+			begin
+				multTemp:=multTemp+(vector1[b]*vector2[b])
+			end;
+		mult:=multTemp
+	end;
+

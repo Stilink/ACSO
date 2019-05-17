@@ -1,0 +1,46 @@
+Program MaxOfVectorOfInteger;
+const
+	nMax=500;
+	
+var
+	max1:integer;
+	max2:integer;
+	maxi:integer;
+	ar:Array[1..nMax] of integer;
+	N:integer;
+	b:integer;
+begin
+	writeln('Digita la longitud del vector');
+    readln(N);
+	writeln('Digita los ',N, ' valores del vector uno abajo de otro');
+	for b:=1 to N do
+		begin
+			readln(ar[b])
+		end;
+	cobegin
+		max1:=max(1, (N div 2));
+		max2:=max((N div 2)+1 , N)
+	coend;
+	if max1>max2 then
+		maxi:=max1
+	else
+		maxi:=max2;
+	writeln('El maximo es:',maxi);
+end;
+
+
+function max(i,j:integer):integer;
+	var
+		maxTemp:integer;
+		b:integer;
+	begin
+		maxTemp:=ar[i];
+		for b:=i to j do
+			begin
+				if array[b]>maxTemp then
+					maxTemp:=array[b];
+				end;
+			end;
+		max:=maxTemp;
+	end;
+

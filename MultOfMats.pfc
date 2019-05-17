@@ -1,0 +1,60 @@
+Program MultOfMats;
+const
+	nMax:=500;
+	mMax:=500;
+	hMax:=500;
+	
+var
+	Mat1:Array[1..mMax,1..nMax] of integer;
+	Mat2:Array[1..nMax,1..hMax] of integer;
+	MatOut:Array[1..mMax,1..hMax] of integer;
+	n1,m1,n2,m2:integer;
+	iout,jout:integer;
+
+begin
+	writeln('Digita el numero de filas de la Matriz 1');
+	readln(n1);
+	writeln('Digita el numero de columnas de la Matriz 1');
+	readln(m1);
+	writeln('Digita el numero de filas de la Matriz 2');
+	readln(n2);
+	writeln('Digita el numero de columnas de la Matriz 2');
+	readln(m2);
+	if(m1=n2) then
+		begin
+			writeln('Digita los valores de la matriz 1');
+			for i:=1 to n1 do
+				for j:=1 to m1 do
+					readln(Mat1[i,j]);
+			writeln('Digita los valores de la matriz 2');
+			for i:=1 to n2 do
+				for j:=1 to m2 do
+					readln(Mat2[i,j]); 
+			
+			
+			cobegin
+				MultMat(1, (n1 div 2));
+				MultMat((n1 div 2)+1, n1);
+			coend;
+			
+			writeln('A continuacion se presenta la matriz resultante:');
+			for iout:=1 to n1 do
+				for jout:=1 to m2 do
+					writeln(MatOut[iout,jout]);
+		end;
+	else
+		writeln('Las dimensiones no son adecuadas para poder multiplicar');
+end;
+
+
+procedure MultMat(in, jf:integer);
+var
+	i,j,k:integer;
+begin
+	for i:=in to jf do
+		for j:=1 to m2 do
+			begin
+				for k:=1 to m1 do
+					MatOut:= MatOut[i,j]+(Mat1[i,k]*Mat2[k,j]);
+			end;
+end;
